@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.chinaunicom.industrialinternet.mappers.SuccessCaseMapper">
+    <resultMap id="BaseResultMap" type="cn.chinaunicom.industrialinternet.entitys.successCase.SuccessCaseVO">
+        <result column="caseText" jdbcType="VARCHAR" property="caseText" />
+        <result column="caseName" jdbcType="VARCHAR" property="caseName" />
+    </resultMap>
+    <select id="getSchemes" resultMap="BaseResultMap">
+        select * from successCase
+    </select>
+
+    <select id="queryIntelligentizeSuccessCase" resultMap="BaseResultMap">
+        select * from successCase  t where  t.isIntelligentize ='Y' order by t.id desc limit 3
+    </select>
+
+    <select id="queryNdustrializeSuccessCase" resultMap="BaseResultMap">
+        select * from successCase  t where  t.isNdustrialize ='Y' order by t.id desc limit 3
+    </select>
+</mapper>

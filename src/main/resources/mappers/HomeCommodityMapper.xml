@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.chinaunicom.industrialinternet.mappers.HomeCommodityMapper">
+<resultMap id="BaseResultMap" type="cn.chinaunicom.industrialinternet.entitys.homeCommodity.homeCommodityVO">
+    <result column="commodityId" jdbcType="VARCHAR" property="commodityId" />
+    <result column="commodityName" jdbcType="VARCHAR" property="commodityName" />
+    <result column="commodityValue" jdbcType="DOUBLE" property="commodityValue" />
+    <result column="exchangeType" jdbcType="VARCHAR" property="exchangeType" />
+    <result column="pictureUrl" jdbcType="VARCHAR" property="pictureUrl" />
+</resultMap>
+    <select id="getCommoditys" resultMap="BaseResultMap">
+        select * from homeCommodity t where t.isHome ='Y'
+    </select>
+
+    <select id="queryAllCommoditys" resultMap="BaseResultMap">
+        select * from homeCommodity t
+        <where>
+        <if test="commodityName!=null and commodityName!=''" >
+            t.commodityName like '%${commodityName}%'
+        </if>
+        </where>
+    </select>
+</mapper>

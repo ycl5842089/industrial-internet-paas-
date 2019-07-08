@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.chinaunicom.industrialinternet.mappers.PassDataMapper">
+    <resultMap id="BaseResultMap" type="cn.chinaunicom.industrialinternet.entitys.passData.PassDataVO">
+        <result column="processedPassData" jdbcType="DOUBLE" property="processedPassData" />
+        <result column="takenPassData" jdbcType="DOUBLE" property="takenPassData" />
+    </resultMap>
+    <select id="getPassDatas" resultMap="BaseResultMap">
+        select * from passData
+    </select>
+</mapper>

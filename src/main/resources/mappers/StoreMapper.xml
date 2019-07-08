@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.chinaunicom.industrialinternet.mappers.StoreMapper">
+    <resultMap id="BaseResultMap" type="cn.chinaunicom.industrialinternet.entitys.store.StoreVO">
+        <result column="commodityName" jdbcType="VARCHAR" property="commodityName" />
+        <result column="commodityValue" jdbcType="VARCHAR" property="commodityValue" />
+        <result column="pictureUrl" jdbcType="VARCHAR" property="pictureUrl" />
+        <result column="navigationPictureUrl" jdbcType="VARCHAR" property="navigationPictureUrl" />
+    </resultMap>
+    <select id="getStore" resultMap="BaseResultMap">
+        select * from store t order by t.id desc limit 8
+    </select>
+
+    <select id="getRecommendStore" resultMap="BaseResultMap">
+        select * from store  t where  t.IsRecommend ='Y' order by t.id desc limit 5
+    </select>
+
+    <select id="getRankStore" resultMap="BaseResultMap">
+        select * from store  t where  t.IsRank ='Y' order by t.id desc limit 5
+    </select>
+</mapper>

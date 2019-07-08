@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.chinaunicom.industrialinternet.mappers.OfferProductsMapper">
+    <resultMap id="BaseResultMap" type="cn.chinaunicom.industrialinternet.entitys.offerProducts.OfferProductsVO">
+        <result column="offerProductsId" jdbcType="VARCHAR" property="offerProductsId" />
+        <result column="offerProductsName" jdbcType="VARCHAR" property="offerProductsName" />
+
+    </resultMap>
+    <select id="getOfferProducts" resultMap="BaseResultMap">
+        select * from offerProducts t where t.onHome='Y'
+    </select>
+
+    <select id="queryAllOfferProducts" resultMap="BaseResultMap">
+        select * from offerProducts t
+        <where>
+            <if test="offerProductsName!=null and offerProductsName!=''" >
+                t.offerProductsName like '%${offerProductsName}%'
+            </if>
+        </where>
+    </select>
+</mapper>
